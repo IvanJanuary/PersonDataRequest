@@ -44,7 +44,17 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         return ""
     }
     
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedName = nameArray[indexPath.row]
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        
+        guard let destination = storyboard.instantiateViewController(withIdentifier: "DataViewController") as? DataViewController else {
+            return
+        }
+        destination.selectedName = selectedName
+        navigationController?.pushViewController(destination, animated: true)
+                print("\(indexPath.row)")
+    }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50

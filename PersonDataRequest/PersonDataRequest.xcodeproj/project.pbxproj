@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C3FBFB92B62AB5100EA4556 /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3FBFB82B62AB5100EA4556 /* DataViewController.swift */; };
 		2CA148642B5E8C1900119B85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA148632B5E8C1900119B85 /* AppDelegate.swift */; };
 		2CA148662B5E8C1900119B85 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA148652B5E8C1900119B85 /* SceneDelegate.swift */; };
 		2CA148682B5E8C1900119B85 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA148672B5E8C1900119B85 /* ViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C3FBFB82B62AB5100EA4556 /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
 		2CA148602B5E8C1900119B85 /* PersonDataRequest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonDataRequest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CA148632B5E8C1900119B85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CA148652B5E8C1900119B85 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +45,7 @@
 			isa = PBXGroup;
 			children = (
 				2CA148672B5E8C1900119B85 /* ViewController.swift */,
+				2C3FBFB82B62AB5100EA4556 /* DataViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -151,6 +154,7 @@
 			files = (
 				2CA148682B5E8C1900119B85 /* ViewController.swift in Sources */,
 				2CA148642B5E8C1900119B85 /* AppDelegate.swift in Sources */,
+				2C3FBFB92B62AB5100EA4556 /* DataViewController.swift in Sources */,
 				2CB36F8B2B6137E80000B216 /* NameTableViewCell.swift in Sources */,
 				2CA148662B5E8C1900119B85 /* SceneDelegate.swift in Sources */,
 			);
