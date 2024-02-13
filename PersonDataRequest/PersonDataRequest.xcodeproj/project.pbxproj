@@ -17,6 +17,7 @@
 		2CB251722B6D090F00923B4F /* GenderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB251712B6D090F00923B4F /* GenderData.swift */; };
 		2CB251742B6D2DC100923B4F /* AgeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB251732B6D2DC100923B4F /* AgeData.swift */; };
 		2CB36F8B2B6137E80000B216 /* NameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB36F8A2B6137E80000B216 /* NameTableViewCell.swift */; };
+		2CC002A42B7B94AC00FE7A30 /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC002A32B7B94AC00FE7A30 /* ApiHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		2CB251712B6D090F00923B4F /* GenderData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderData.swift; sourceTree = "<group>"; };
 		2CB251732B6D2DC100923B4F /* AgeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeData.swift; sourceTree = "<group>"; };
 		2CB36F8A2B6137E80000B216 /* NameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameTableViewCell.swift; sourceTree = "<group>"; };
+		2CC002A32B7B94AC00FE7A30 /* ApiHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 			children = (
 				2CA148672B5E8C1900119B85 /* ViewController.swift */,
 				2C3FBFB82B62AB5100EA4556 /* DataViewController.swift */,
+				2CC002A32B7B94AC00FE7A30 /* ApiHelper.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 				2CB251722B6D090F00923B4F /* GenderData.swift in Sources */,
 				2CA148682B5E8C1900119B85 /* ViewController.swift in Sources */,
 				2CA148642B5E8C1900119B85 /* AppDelegate.swift in Sources */,
+				2CC002A42B7B94AC00FE7A30 /* ApiHelper.swift in Sources */,
 				2C3FBFB92B62AB5100EA4556 /* DataViewController.swift in Sources */,
 				2CB36F8B2B6137E80000B216 /* NameTableViewCell.swift in Sources */,
 				2CA148662B5E8C1900119B85 /* SceneDelegate.swift in Sources */,
