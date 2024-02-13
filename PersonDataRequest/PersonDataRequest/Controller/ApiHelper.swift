@@ -18,6 +18,7 @@ struct ApiHelper {
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             if let error = error {
                 print("Gender request error: \(error.localizedDescription)")
+                completion(nil)
                 return
             }
             
@@ -31,6 +32,7 @@ struct ApiHelper {
                 completion(decodedData)
             } catch {
                 print("Decoding error JSON age: \(error)")
+                completion(nil)
             }
         }
         task.resume()
