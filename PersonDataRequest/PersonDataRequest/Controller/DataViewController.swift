@@ -21,27 +21,27 @@ class DataViewController: UIViewController {
         super.viewDidLoad()
         nameLabel.text = selectedName
         
-        netRequest()
+        queryUserData()
     }
     
-    func netRequest() {
+    func queryUserData() {
         guard let selectedName = selectedName else { return }
         let genderUrl = "https://api.genderize.io/?name=\(selectedName)"
         let ageUrl = "https://api.agify.io/?name=\(selectedName)"
         
         let apiHelper = ApiHelper()
         
-        apiHelper.makeRequest(urlString: genderUrl, t: GenderData.self) { genderData in
+        apiHelper.makeRequest(urlString: genderUrl, t: GenderData.self) { [weak self] genderData in
             guard let genderData = genderData else { return }
             DispatchQueue.main.async {
-                self.genderUpdateUI(with: genderData)
+                self?.genderUpdateUI(with: genderData )
             }
         }
         
-        apiHelper.makeRequest(urlString: ageUrl, t: AgeData.self) { ageData in
+        apiHelper.makeRequest(urlString: ageUrl, t: AgeData.self) { [weak self] ageData in
             guard let ageData = ageData else { return }
             DispatchQueue.main.async {
-                self.ageUpdateUI(with: ageData)
+                self?.ageUpdateUI(with: ageData)
             }
         }
     }

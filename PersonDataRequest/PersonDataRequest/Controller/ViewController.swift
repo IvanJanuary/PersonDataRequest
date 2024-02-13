@@ -53,7 +53,6 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         }
         destination.selectedName = selectedName
         navigationController?.pushViewController(destination, animated: true)
-                print("\(indexPath.row)")
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
