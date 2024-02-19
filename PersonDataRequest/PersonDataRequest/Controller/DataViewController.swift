@@ -46,6 +46,16 @@ class DataViewController: UIViewController {
         }
     }
     
+    func errorAlert(with error: Error) {
+        let alert = UIAlertController(title: "Error!", message: "Your error: \(error.localizedDescription)", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { _ in
+        }))
+        alert.addAction(UIAlertAction(title: "Retry", style: .default, handler: { [weak self] (_: UIAlertAction!) in
+            self?.queryUserData()
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     func genderUpdateUI(with genderData: GenderData) {
         genderLabel.text = genderData.gender
         if let probability = genderData.probability {
