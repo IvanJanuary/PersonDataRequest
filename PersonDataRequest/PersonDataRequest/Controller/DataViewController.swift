@@ -26,22 +26,36 @@ class DataViewController: UIViewController {
     
     func queryUserData() {
         guard let selectedName = selectedName else { return }
-        let genderUrl = "https://api.genderize.io/?name=\(selectedName)"
+        let genderUrl = "https://api.genderizeeee.io/?name=\(selectedName)" // make "eee" mistake in URL
         let ageUrl = "https://api.agify.io/?name=\(selectedName)"
         
         let apiHelper = ApiHelper()
         
-        apiHelper.makeRequest(urlString: genderUrl, t: GenderData.self) { [weak self] genderData in
-            guard let genderData = genderData else { return }
-            DispatchQueue.main.async {
-                self?.genderUpdateUI(with: genderData )
+        apiHelper.makeRequest(urlString: genderUrl, t: GenderData.self) { [weak self] result in
+            switch result {
+            case .success(let genderData):
+                guard let genderData = genderData else { return }
+                DispatchQueue.main.async {
+                    self?.genderUpdateUI(with: genderData )
+                }
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self?.errorAlert(with: error )
+                }
             }
         }
         
-        apiHelper.makeRequest(urlString: ageUrl, t: AgeData.self) { [weak self] ageData in
-            guard let ageData = ageData else { return }
-            DispatchQueue.main.async {
-                self?.ageUpdateUI(with: ageData)
+        apiHelper.makeRequest(urlString: ageUrl, t: AgeData.self) { [weak self] result in
+            switch result {
+            case .success(let ageData):
+                guard let ageData = ageData else { return }
+                DispatchQueue.main.async {
+                    self?.ageUpdateUI(with: ageData)
+                }
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self?.errorAlert(with: error)
+                }
             }
         }
     }
