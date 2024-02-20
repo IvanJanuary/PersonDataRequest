@@ -26,7 +26,7 @@ class DataViewController: UIViewController {
     
     func queryUserData() {
         guard let selectedName = selectedName else { return }
-        let genderUrl = "https://api.genderizeeee.io/?name=\(selectedName)"
+        let genderUrl = "https://api.genderize.io/?name=\(selectedName)"
         let ageUrl = "https://api.agify.io/?name=\(selectedName)"
         
         let apiHelper = ApiHelper()
