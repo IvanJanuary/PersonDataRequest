@@ -88,7 +88,7 @@ class DataViewController: UIViewController {
     func genderUpdateUI(with genderData: GenderData) {
         genderLabel.text = genderData.gender
         if let probability = genderData.probability {
-            probabilityLabel.text = String(format: "Probability: %d%%", probability * 100)
+            probabilityLabel.text = String(format: "%d%%", probability * 100)
         } else {
             probabilityLabel.text = "Probability unknown"
         }
@@ -96,7 +96,7 @@ class DataViewController: UIViewController {
     
     func ageUpdateUI(with ageData: AgeData) {
         if let age = ageData.age {
-            ageLabel.text = String(format: "Age: %d", age)
+            ageLabel.text = String(format: "%d", age)
         } else {
             ageLabel.text = "Age unknown"
         }
