@@ -77,7 +77,7 @@
                                 <rect key="frame" x="0.0" y="47" width="390" height="763"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ex-h2-rSO">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="763"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="164.33333333333334"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="THY-Gg-wX8">
                                                 <rect key="frame" x="153" y="10" width="217" height="21"/>
@@ -103,7 +103,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Activity" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kth-cA-JKy">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activity" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kth-cA-JKy">
                                                 <rect key="frame" x="153" y="134" width="217" height="20.333333333333343"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -136,7 +136,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plan for the day:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i31-XL-JpD">
                                                 <rect key="frame" x="20" y="134" width="125" height="21"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="125" id="2IC-P5-kbK"/>
+                                                    <constraint firstAttribute="width" constant="125" id="c4e-BY-BHh"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -149,7 +149,7 @@
                                             <constraint firstItem="iFK-k0-P6f" firstAttribute="leading" secondItem="wtD-Rr-1z9" secondAttribute="trailing" constant="8" id="3ri-JO-mWe"/>
                                             <constraint firstItem="Kth-cA-JKy" firstAttribute="leading" secondItem="i31-XL-JpD" secondAttribute="trailing" constant="8" id="6NN-a9-Eyf"/>
                                             <constraint firstItem="i31-XL-JpD" firstAttribute="leading" secondItem="4ex-h2-rSO" secondAttribute="leading" constant="20" id="Cib-Sz-Gw2"/>
-                                            <constraint firstAttribute="bottom" secondItem="Kth-cA-JKy" secondAttribute="bottom" priority="250" constant="608" id="D8B-Jb-BIl"/>
+                                            <constraint firstAttribute="bottom" secondItem="Kth-cA-JKy" secondAttribute="bottom" constant="10" id="D8B-Jb-BIl"/>
                                             <constraint firstItem="KcA-R9-5rZ" firstAttribute="leading" secondItem="4ex-h2-rSO" secondAttribute="leading" constant="20" id="Dca-Zh-4lV"/>
                                             <constraint firstItem="CA6-5n-6OG" firstAttribute="top" secondItem="4ex-h2-rSO" secondAttribute="top" constant="10" id="Eiy-fu-DFP"/>
                                             <constraint firstItem="nkP-4h-nR4" firstAttribute="leading" secondItem="THY-Gg-wX8" secondAttribute="leading" id="F1u-gX-KwY"/>
@@ -179,11 +179,10 @@
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="4ex-h2-rSO" firstAttribute="centerY" secondItem="tCX-rm-d5e" secondAttribute="centerY" id="EZ6-hU-6lM"/>
-                                    <constraint firstItem="4ex-h2-rSO" firstAttribute="width" secondItem="tCX-rm-d5e" secondAttribute="width" id="IPf-ng-2bs"/>
+                                    <constraint firstItem="4ex-h2-rSO" firstAttribute="width" secondItem="tCX-rm-d5e" secondAttribute="width" id="Fqm-MU-zjA"/>
                                     <constraint firstAttribute="trailing" secondItem="4ex-h2-rSO" secondAttribute="trailing" id="bGx-RZ-MyO"/>
                                     <constraint firstItem="4ex-h2-rSO" firstAttribute="top" secondItem="tCX-rm-d5e" secondAttribute="top" id="cAX-Bi-ZNz"/>
-                                    <constraint firstAttribute="bottom" secondItem="4ex-h2-rSO" secondAttribute="bottom" id="dlo-v1-pNA"/>
+                                    <constraint firstAttribute="bottom" secondItem="4ex-h2-rSO" secondAttribute="bottom" priority="250" id="dlo-v1-pNA"/>
                                     <constraint firstItem="4ex-h2-rSO" firstAttribute="leading" secondItem="tCX-rm-d5e" secondAttribute="leading" id="rr4-YO-8Nm"/>
                                 </constraints>
                             </scrollView>
