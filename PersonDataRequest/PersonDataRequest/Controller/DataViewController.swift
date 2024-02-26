@@ -15,7 +15,7 @@ class DataViewController: UIViewController {
     @IBOutlet weak var genderLabel: UILabel!
     @IBOutlet weak var probabilityLabel: UILabel!
     @IBOutlet weak var ageLabel: UILabel!
-    
+    @IBOutlet weak var activityLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +28,7 @@ class DataViewController: UIViewController {
         guard let selectedName = selectedName else { return }
         let genderUrl = "https://api.genderize.io/?name=\(selectedName)"
         let ageUrl = "https://api.agify.io/?name=\(selectedName)"
+        let activityUrl = "https://www.boredapi.com/api/activity/"
         
         let apiHelper = ApiHelper()
         
@@ -58,6 +59,20 @@ class DataViewController: UIViewController {
                 }
             }
         }
+        
+        apiHelper.makeRequest(urlString: activityUrl, t: ActivityData.self) { [weak self] result in
+            switch result {
+            case .success(let activityData):
+                guard let activityData = activityData else { return }
+                DispatchQueue.main.async {
+                    self?.activityUpdateUI(with: activityData)
+                }
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self?.errorAlert(with: error)
+                }
+            }
+        }
     }
     
     func errorAlert(with error: Error) {
@@ -73,7 +88,7 @@ class DataViewController: UIViewController {
     func genderUpdateUI(with genderData: GenderData) {
         genderLabel.text = genderData.gender
         if let probability = genderData.probability {
-            probabilityLabel.text = String(format: "Probability: %d%%", probability * 100)
+            probabilityLabel.text = String(format: "%d%%", probability * 100)
         } else {
             probabilityLabel.text = "Probability unknown"
         }
@@ -81,10 +96,14 @@ class DataViewController: UIViewController {
     
     func ageUpdateUI(with ageData: AgeData) {
         if let age = ageData.age {
-            ageLabel.text = String(format: "Age: %d", age)
+            ageLabel.text = String(format: "%d", age)
         } else {
             ageLabel.text = "Age unknown"
         }
+    }
+    
+    func activityUpdateUI(with activity: ActivityData) {
+        activityLabel.text = activity.activity
     }
 }
         
