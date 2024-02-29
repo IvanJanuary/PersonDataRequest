@@ -13,7 +13,6 @@ class DataViewController: UIViewController {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var genderLabel: UILabel!
-    @IBOutlet weak var probabilityLabel: UILabel!
     @IBOutlet weak var ageLabel: UILabel!
     @IBOutlet weak var activityLabel: UILabel!
     
@@ -33,45 +32,42 @@ class DataViewController: UIViewController {
         let apiHelper = ApiHelper()
         
         apiHelper.makeRequest(urlString: genderUrl, t: GenderData.self) { [weak self] result in
-            switch result {
-            case .success(let genderData):
-                guard let genderData = genderData else { return }
-                DispatchQueue.main.async {
-                    self?.genderUpdateUI(with: genderData )
-                }
-            case .failure(let error):
-                DispatchQueue.main.async {
-                    self?.errorAlert(with: error )
-                }
-            }
+            self?.handleRequestResult(result)
         }
         
         apiHelper.makeRequest(urlString: ageUrl, t: AgeData.self) { [weak self] result in
-            switch result {
-            case .success(let ageData):
-                guard let ageData = ageData else { return }
-                DispatchQueue.main.async {
-                    self?.ageUpdateUI(with: ageData)
-                }
-            case .failure(let error):
-                DispatchQueue.main.async {
-                    self?.errorAlert(with: error)
-                }
-            }
+            self?.handleRequestResult(result)
         }
         
         apiHelper.makeRequest(urlString: activityUrl, t: ActivityData.self) { [weak self] result in
-            switch result {
-            case .success(let activityData):
-                guard let activityData = activityData else { return }
-                DispatchQueue.main.async {
-                    self?.activityUpdateUI(with: activityData)
-                }
-            case .failure(let error):
-                DispatchQueue.main.async {
-                    self?.errorAlert(with: error)
-                }
-            }
+            self?.handleRequestResult(result)
+        }
+    }
+    
+    func handleRequestResult<T: Decodable>(_ result: Result<T?, Error>) where T: StringRepresentable {
+         switch result {
+         case .success(let data):
+             guard let data = data else { return }
+             DispatchQueue.main.async {
+                 self.updateUI(data: data)
+             }
+         case .failure(let error):
+             DispatchQueue.main.async {
+                 self.errorAlert(with: error)
+             }
+         }
+     }
+    
+    func updateUI<T: StringRepresentable>(data: T) {
+        switch data.self {
+        case is AgeData:
+            ageLabel.text = data.stringRepresentation
+        case is GenderData:
+            genderLabel.text = data.stringRepresentation
+        case is ActivityData:
+            activityLabel.text = data.stringRepresentation
+        default:
+            return
         }
     }
     
@@ -83,27 +79,6 @@ class DataViewController: UIViewController {
             self?.queryUserData()
         }))
         self.present(alert, animated: true, completion: nil)
-    }
-    
-    func genderUpdateUI(with genderData: GenderData) {
-        genderLabel.text = genderData.gender
-        if let probability = genderData.probability {
-            probabilityLabel.text = String(format: "%d%%", probability * 100)
-        } else {
-            probabilityLabel.text = "Probability unknown"
-        }
-    }
-    
-    func ageUpdateUI(with ageData: AgeData) {
-        if let age = ageData.age {
-            ageLabel.text = String(format: "%d", age)
-        } else {
-            ageLabel.text = "Age unknown"
-        }
-    }
-    
-    func activityUpdateUI(with activity: ActivityData) {
-        activityLabel.text = activity.activity
     }
 }
         
