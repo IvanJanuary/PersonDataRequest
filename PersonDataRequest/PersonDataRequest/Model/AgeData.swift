@@ -7,6 +7,14 @@
 
 import Foundation
 
-struct AgeData: Decodable {
+struct AgeData: Decodable, StringRepresentable {
+    var stringRepresentation: String {
+        if let age = age {
+            return String(format: "%d", age)
+        } else {
+            return "Age unknown"
+        }
+    }
+    
     let age: Int?
 }
