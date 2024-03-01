@@ -11,8 +11,6 @@ struct ActivityData: Decodable, StringRepresentable {
     var stringRepresentation: String {
         return activity ?? ""
     }
-    
+
     var activity: String?
-    
-    
 }

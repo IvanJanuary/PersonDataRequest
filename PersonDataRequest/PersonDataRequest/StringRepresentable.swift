@@ -10,5 +10,4 @@ import Foundation
 protocol StringRepresentable {
     var stringRepresentation: String { get }
     
-    
 }
