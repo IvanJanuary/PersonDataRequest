@@ -7,7 +7,10 @@
 
 import Foundation
 
-struct GenderData: Decodable {
+struct GenderData: Decodable, StringRepresentable {
+    var stringRepresentation: String {
+        return gender ?? ""
+    }
+    
     let gender: String?
-    let probability: Int?
 }
