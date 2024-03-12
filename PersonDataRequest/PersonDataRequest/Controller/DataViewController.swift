@@ -11,13 +11,20 @@ class DataViewController: UIViewController {
     
     var selectedName: String?
     
+    var gallery: Gallery = Gallery()
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var genderLabel: UILabel!
     @IBOutlet weak var ageLabel: UILabel!
     @IBOutlet weak var activityLabel: UILabel!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.collectionView.dataSource = self
+        self.collectionView.delegate = self
+        
         nameLabel.text = selectedName
         
         queryUserData()
@@ -82,4 +89,24 @@ class DataViewController: UIViewController {
     }
 }
         
+extension DataViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return gallery.pictures.count
+    }
     
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PictureCell", for: indexPath) as? PictureCell else { return UICollectionViewCell() }
+        
+        let picture = gallery.pictures[indexPath.item]
+        cell.setupCell(picture: picture)
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 150, height: 150)
+    }
+    
+    
+    
+}
