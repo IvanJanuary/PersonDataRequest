@@ -12,6 +12,7 @@ class DataViewController: UIViewController {
     var selectedName: String?
     
     var gallery: Gallery = Gallery()
+    let apiHelper = ApiHelper()
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var genderLabel: UILabel!
@@ -35,8 +36,7 @@ class DataViewController: UIViewController {
         let genderUrl = "https://api.genderize.io/?name=\(selectedName)"
         let ageUrl = "https://api.agify.io/?name=\(selectedName)"
         let activityUrl = "https://www.boredapi.com/api/activity/"
-        
-        let apiHelper = ApiHelper()
+        let pictureGalleryUrl = "https://api.unsplash.com/search/photos?query=nature&client_id=HgIp9aycssr9xW_6xUKmzPyt73ku6HhcgAapLQp664o&per_page=5"
         
         apiHelper.makeRequest(urlString: genderUrl, t: GenderData.self) { [weak self] result in
             self?.handleRequestResult(result)
@@ -48,6 +48,40 @@ class DataViewController: UIViewController {
         
         apiHelper.makeRequest(urlString: activityUrl, t: ActivityData.self) { [weak self] result in
             self?.handleRequestResult(result)
+        }
+        
+        apiHelper.makeRequest(urlString: pictureGalleryUrl, t: PictureGallery.self) { [weak self] result in
+            switch result {
+            case .success(let data):
+                guard let data = data else { return }
+                self?.loadPictures(data)
+                
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self?.errorAlert(with: error)
+                }
+            }
+        }
+    }
+    
+    func loadPictures(_ pictureGallery: PictureGallery) {
+        for i in 0..<5 {
+            if pictureGallery.results.indices.contains(i) {
+                let item = pictureGallery.results[i]
+                let pictureUrl = item.urls.small
+                
+                apiHelper.makePictureRequest(pictureUrl: pictureUrl, index: i) { [weak self] result in
+                    switch result {
+                    case .success(let imageData):
+                        DispatchQueue.main.async {
+                            self?.gallery.pictures[i].image = UIImage(data: imageData) ?? UIImage()
+                            self?.collectionView.reloadData()
+                        }
+                    case .failure(let error):
+                        print("Error loading picture: \(error)")
+                    }
+                }
+            }
         }
     }
     
@@ -106,7 +140,4 @@ extension DataViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 150, height: 150)
     }
-    
-    
-    
 }

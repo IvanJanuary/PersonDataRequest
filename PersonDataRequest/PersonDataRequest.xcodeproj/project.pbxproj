@@ -22,6 +22,7 @@
 		2CB251742B6D2DC100923B4F /* AgeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB251732B6D2DC100923B4F /* AgeData.swift */; };
 		2CB36F8B2B6137E80000B216 /* NameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB36F8A2B6137E80000B216 /* NameTableViewCell.swift */; };
 		2CC002A42B7B94AC00FE7A30 /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC002A32B7B94AC00FE7A30 /* ApiHelper.swift */; };
+		2CC6D51D2BA32F88001701A0 /* PictureGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC6D51C2BA32F88001701A0 /* PictureGallery.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		2CB251732B6D2DC100923B4F /* AgeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeData.swift; sourceTree = "<group>"; };
 		2CB36F8A2B6137E80000B216 /* NameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameTableViewCell.swift; sourceTree = "<group>"; };
 		2CC002A32B7B94AC00FE7A30 /* ApiHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiHelper.swift; sourceTree = "<group>"; };
+		2CC6D51C2BA32F88001701A0 /* PictureGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureGallery.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				2CB251732B6D2DC100923B4F /* AgeData.swift */,
 				2CB251712B6D090F00923B4F /* GenderData.swift */,
 				2C48F5D72B8B5C01001BC0F0 /* ActivityData.swift */,
+				2CC6D51C2BA32F88001701A0 /* PictureGallery.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 				2C48F5D82B8B5C01001BC0F0 /* ActivityData.swift in Sources */,
 				2CB251742B6D2DC100923B4F /* AgeData.swift in Sources */,
 				2CB251722B6D090F00923B4F /* GenderData.swift in Sources */,
+				2CC6D51D2BA32F88001701A0 /* PictureGallery.swift in Sources */,
 				2C55C3B72B908D150034C506 /* StringRepresentable.swift in Sources */,
 				2C4E6C402B94CB4D00EFED24 /* Gallery.swift in Sources */,
 				2CA148682B5E8C1900119B85 /* ViewController.swift in Sources */,
