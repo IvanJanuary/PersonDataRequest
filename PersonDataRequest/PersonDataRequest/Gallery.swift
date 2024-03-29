@@ -28,8 +28,8 @@ class Gallery {
         let img1 = Picture(image: UIImage())
         let img2 = Picture(image: UIImage())
         let img3 = Picture(image: UIImage())
-        let img4 = Picture(image: UIImage(named: "img4")!)
-        let img5 = Picture(image: UIImage(named: "img5")!)
+        let img4 = Picture(image: UIImage())
+        let img5 = Picture(image: UIImage())
         self.pictures = [img1, img2, img3, img4, img5]
     }
 }
