@@ -245,6 +245,35 @@
             </objects>
             <point key="canvasLocation" x="1636.9230769230769" y="-28.436018957345969"/>
         </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="sfV-sW-fmp">
+            <objects>
+                <viewController storyboardIdentifier="DetailViewController" id="srm-f0-d42" customClass="DetailViewController" customModule="PersonDataRequest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6qi-MQ-Pye">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wx4-Qw-LLb">
+                                <rect key="frame" x="20" y="67" width="350" height="723"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="8V9-5b-AtD"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="8V9-5b-AtD" firstAttribute="trailing" secondItem="Wx4-Qw-LLb" secondAttribute="trailing" constant="20" id="1ry-V8-f88"/>
+                            <constraint firstItem="Wx4-Qw-LLb" firstAttribute="top" secondItem="8V9-5b-AtD" secondAttribute="top" constant="20" id="TAW-ey-Ab8"/>
+                            <constraint firstItem="8V9-5b-AtD" firstAttribute="bottom" secondItem="Wx4-Qw-LLb" secondAttribute="bottom" constant="20" id="dF7-xg-xkU"/>
+                            <constraint firstItem="Wx4-Qw-LLb" firstAttribute="leading" secondItem="8V9-5b-AtD" secondAttribute="leading" constant="20" id="qrX-mk-1Td"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="Wx4-Qw-LLb" id="MVq-ok-yHM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KcW-HO-tyr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2433.8461538461538" y="-28.436018957345969"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="MoC-Zv-hf6">
             <objects>
