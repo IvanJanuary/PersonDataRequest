@@ -19,10 +19,7 @@ class DataViewController: UIViewController {
     @IBOutlet weak var ageLabel: UILabel!
     @IBOutlet weak var activityLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
-    
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -61,7 +58,9 @@ class DataViewController: UIViewController {
                 
             case .failure(let error):
                 DispatchQueue.main.async {
-                    self?.errorAlert(with: error, completion: {self?.queryUserData()})
+                    self?.errorAlert(with: error, completion: { [weak self] in
+                        self?.queryUserData()
+                    })
                 }
             }
         }
@@ -99,7 +98,9 @@ class DataViewController: UIViewController {
              }
          case .failure(let error):
              DispatchQueue.main.async {
-                 self.errorAlert(with: error) { self.queryUserData()}
+                 self.errorAlert(with: error) { [weak self] in
+                     self?.queryUserData()
+                 }
              }
          }
      }
