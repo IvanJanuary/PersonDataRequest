@@ -20,6 +20,9 @@ class DataViewController: UIViewController {
     @IBOutlet weak var activityLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -58,7 +61,7 @@ class DataViewController: UIViewController {
                 
             case .failure(let error):
                 DispatchQueue.main.async {
-                    self?.errorAlert(with: error)
+                    self?.errorAlert(with: error, completion: {self?.queryUserData()})
                 }
             }
         }
@@ -69,12 +72,14 @@ class DataViewController: UIViewController {
             if pictureGallery.results.indices.contains(i) {
                 let item = pictureGallery.results[i]
                 let pictureUrl = item.urls.small
+                let bigPictureURL = item.urls.regular
                 
-                apiHelper.makePictureRequest(pictureUrl: pictureUrl, index: i) { [weak self] result in
+                apiHelper.makePictureRequest(pictureUrl: pictureUrl) { [weak self] result in
                     switch result {
                     case .success(let imageData):
                         DispatchQueue.main.async {
                             self?.gallery.pictures[i].image = UIImage(data: imageData) ?? UIImage()
+                            self?.gallery.pictures[i].regularUrl = bigPictureURL
                             self?.collectionView.reloadData()
                         }
                     case .failure(let error):
@@ -94,7 +99,7 @@ class DataViewController: UIViewController {
              }
          case .failure(let error):
              DispatchQueue.main.async {
-                 self.errorAlert(with: error)
+                 self.errorAlert(with: error) { self.queryUserData()}
              }
          }
      }
@@ -110,16 +115,6 @@ class DataViewController: UIViewController {
         default:
             return
         }
-    }
-    
-    func errorAlert(with error: Error) {
-        let alert = UIAlertController(title: "Error!", message: "Your error: \(error.localizedDescription)", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { _ in
-        }))
-        alert.addAction(UIAlertAction(title: "Retry", style: .default, handler: { [weak self] (_: UIAlertAction!) in
-            self?.queryUserData()
-        }))
-        self.present(alert, animated: true, completion: nil)
     }
 }
         
@@ -139,5 +134,15 @@ extension DataViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 150, height: 150)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedPicture = gallery.pictures[indexPath.item]
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        
+        guard let detailViewController = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else { return }
+        
+        detailViewController.regularURL = selectedPicture.regularUrl
+        navigationController?.pushViewController(detailViewController, animated: true)
     }
 }
