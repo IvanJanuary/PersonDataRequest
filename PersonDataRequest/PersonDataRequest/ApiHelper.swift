@@ -37,7 +37,7 @@ struct ApiHelper {
         task.resume()
     }
     
-    func makePictureRequest(pictureUrl: String, index i: Int, completion: @escaping (Result<Data, Error>) -> Void) {
+    func makePictureRequest(pictureUrl: String, completion: @escaping (Result<Data, Error>) -> Void) {
         guard let url = URL(string: pictureUrl) else {
             completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))
             return }
